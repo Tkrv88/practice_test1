@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Типы{% endblock %}
+{% block content %}
+<div class="container">
+  <h1>Список всех типов новостей</h1>
+  <article>
+    {% for type in tips %}
+      <ul>
+        <li>
+          Название: {{ type.name }}
+        </li>
+        <li>
+          Цвет: {{ type.color }}
+        </li>
+      </ul>
+      <a href="{% url 'news:types' type.name %}">все записи данного типа</a>
+      {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
+  </article>
+</div>
+{% endblock %}  

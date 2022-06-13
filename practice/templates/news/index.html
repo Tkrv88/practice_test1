@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Новости{% endblock %}
+{% block content %}
+<div class="container">
+  <h1>Список всех новостей</h1>
+  <article>
+    {% for new in news %}
+      <ul>
+        <li>
+          Название: {{ new.name }}
+        </li>
+        <li>
+          Краткое описание: {{ new.short_description }}
+        </li>
+        <li>
+          Тип: {{ new.type.name }}
+        </li>
+        <li>
+          Цвет типа: {{ new.type.color}}
+        </li>
+      </ul>
+      {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
+  </article>
+</div>
+{% endblock %}  
