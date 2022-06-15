@@ -3,6 +3,7 @@ from .models import News, Type
 
 class NewsAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'name',
         'short_description',
         'full_description',
@@ -12,6 +13,7 @@ class NewsAdmin(admin.ModelAdmin):
 
 class TypeAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'name',
         'color'
     )

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Создание новости{% endblock %}
+{% block content %}
+<div class="container">
+  <h1>Создать новость</h1>
+  <form method="POST">
+    {% csrf_token %}
+      <p>
+        <label>Введите имя</label><br>
+        <input type="text" name="name" value="{{ news.name }}" />
+      </p>
+      <p>
+        <label>Введите краткое описание</label><br>
+        <input type="text" name="short_description" value="{{ new.short_description }}" />
+      </p>
+      <p>
+        <label>Введите полное описание</label><br>
+        <input type="text" name="full_description" value="{{ new.full_description }}" />
+      </p>
+      <p>
+        <label>Введите тип</label><br>
+        <input type="type" name="type" value="{{ news.type }}" />
+      </p>
+      <input type="submit" value="Сохранить" >
+  </form>
+</div>
+{% endblock %}

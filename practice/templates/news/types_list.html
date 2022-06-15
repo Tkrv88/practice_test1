@@ -2,6 +2,19 @@
 {% block title %}Типы{% endblock %}
 {% block content %}
 <div class="container">
+  <h1>Создать тип</h1>
+  <form method="POST" action="create_type/">
+    {% csrf_token %}
+      <p>
+        <label>Введите имя</label><br>
+        <input type="text" name="name" />
+      </p>
+      <p>
+        <label>Введите цвет</label><br>
+        <input type="text" name="color" />
+      </p>
+      <input type="submit" value="Сохранить">
+  </form>
   <h1>Список всех типов новостей</h1>
   <article>
     {% for type in tips %}
@@ -12,8 +25,10 @@
         <li>
           Цвет: {{ type.color }}
         </li>
+        <a href="{% url 'news:types' type.name %}">Все записи данного типа</a>
+        <br>
+        <a href="{% url 'news:delete_type' type.id %}">Удалить</a> | <a href="{% url 'news:edit_type' type.id %}">Изменить</a>
       </ul>
-      <a href="{% url 'news:types' type.name %}">все записи данного типа</a>
       {% if not forloop.last %}<hr>{% endif %}
     {% endfor %}
   </article>
