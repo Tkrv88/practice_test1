@@ -6,7 +6,7 @@ from .models import News, Type
 
 def index(request):
     template = 'news/index.html'
-    news = News.objects.all()
+    news = News.objects.order_by('id').all()
     context = {
         'news': news,
     }
@@ -28,7 +28,7 @@ def types(request, name):
 
 def all_types(request):
     template = 'news/types_list.html'
-    tips = Type.objects.all()
+    tips = Type.objects.order_by('id').all()
     context = {
         'tips': tips,
     }
