@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Новости{% endblock %}
+{% block content %}
+<div class="container">
+  <h1>Создать новость</h1>
+  <form method="POST" action="create_news/">
+    {% csrf_token %}
+      <p>
+        <label>Введите имя</label><br>
+        <input type="text" name="name" />
+      </p>
+      <p>
+        <label>Введите краткое описание</label><br>
+        <input type="text" name="short_description" />
+      </p>
+      <p>
+        <label>Введите полное описание</label><br>
+        <input type="text" name="full_description" />
+
+      </p>
+      <p>
+        <label>Введите тип</label><br>
+<!--        <input type="text" name="type" />-->
+        <select>
+          {% for type in options %}
+            <option value="{{type.id}}">{{ type.name }}</option>
+          {% endfor %}
+        </select>
+      </p>
+      <input type="submit" value="Сохранить" >
+  </form>
+  <h1>Список всех новостей</h1>
+  <article>
+    {% for new in news %}
+      <ul>
+        <li>
+          Название: {{ new.name }}
+        </li>
+        <li>
+          Краткое описание: {{ new.short_description }}
+        </li>
+        <li>
+          Тип: {{ new.type }}
+        </li>
+        <li>
+          Цвет типа: {{ new.type.color}}
+        </li>
+        <a href="{% url 'news:delete_news' new.id %}">Удалить</a> | <a href="{% url 'news:edit_news' new.id %}">Редактировать</a>
+      </ul>
+      {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
+  </article>
+</div>
+{% endblock %}

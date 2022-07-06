@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Создание новости{% endblock %}
+{% block content %}
+<div class="container">
+  <h1>Создать новость</h1>
+  <form method="POST">
+    {% csrf_token %}
+      <p>
+        <label>Введите имя</label><br>
+        <input type="text" name="name" value="{{ type.name }}" />
+      </p>
+      <p>
+        <label>Введите цвет</label><br>
+        <input type="text" name="color" value="{{ type.color }}" />
+      </p>
+      <input type="submit" value="Сохранить" >
+  </form>
+</div>
+{% endblock %}

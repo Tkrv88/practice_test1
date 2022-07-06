@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Типовые новости{% endblock %}
+{% block content %}
+<div class="container">
+  <h1>{{ title }}</h1>
+  <article>
+    {% for new in news %}
+      <ul>
+        <li>
+          Название: {{ new.name }}
+        </li>
+        <li>
+          Краткое описание: {{ new.short_description }}
+        </li>
+      </ul>
+      {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
+  </article>
+</div>
+{% endblock %}
