@@ -19,7 +19,12 @@
       </p>
       <p>
         <label>Введите тип</label><br>
-        <input type="type" name="type" value="{{ news.type }}" />
+<!--        <input type="type" name="type" value="{{ news.type }}" />-->
+        <select>
+          {% for type in options %}
+            <option value="{{type.id}}">{{ type.name }}</option>
+          {% endfor %}
+        </select>
       </p>
       <input type="submit" value="Сохранить" >
   </form>

@@ -7,8 +7,10 @@ from .models import News, Type
 def index(request):
     template = 'news/index.html'
     news = News.objects.order_by('id').all()
+    options = Type.objects.all()
     context = {
         'news': news,
+        'options': options,
     }
     return render(request, template, context)
 
@@ -69,10 +71,12 @@ def create_type(request):
 def edit_news(request, id):
     template = 'news/edit_news.html'
     ex = '<h1>Новость не найдена</h1>'
+    options = Type.objects.all()
     try:
         news = News.objects.get(id=id)
         context = {
             'news':news,
+            'options': options,
         }
         if request.method == "POST":
             news.name = request.POST.get("name")
